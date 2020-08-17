@@ -319,16 +319,13 @@ export class TsMongoVisitor extends BaseVisitor<TypeScriptMongoPluginConfig, Typ
     const possibleTypes = node.types
       .map(namedType => {
         const schemaType = this._schema.getType(namedType.name.value);
-        const entityDirective = this._getDirectiveFromAstNode(schemaType.astNode, Directives.GRAPHQLATOR);
         const abstractEntityDirective = this._getDirectiveFromAstNode(schemaType.astNode, Directives.ABSTRACT_ENTITY);
 
-        if (entityDirective) {
-          return this.convertName(namedType, { suffix: this.config.dbTypeSuffix });
-        } else if (abstractEntityDirective) {
+        if (abstractEntityDirective) {
           return this.convertName(namedType, { suffix: this.config.dbInterfaceSuffix });
         }
 
-        return null;
+        return this.convertName(namedType, { suffix: this.config.dbTypeSuffix });
       })
       .filter(a => a);
 
