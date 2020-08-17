@@ -1,0 +1,37 @@
+{
+  "name": "graphqlator-codegen-plugin",
+  "version": "0.0.1",
+  "description": "GraphQL Code Generator plugin for GraphQLator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xolvio/graphqlator-codegen-plugin.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint **/*.ts",
+    "test": "jest",
+    "prepack": "tsc"
+  },
+  "dependencies": {
+    "@graphql-codegen/plugin-helpers": "^1.17.8",
+    "@graphql-codegen/typescript": "^1.17.8",
+    "@graphql-codegen/visitor-plugin-common": "^1.17.13",
+    "@graphql-tools/utils": "^6.0.18",
+    "auto-bind": "~4.0.0",
+    "lodash": "~4.17.20",
+    "tslib": "~2.0.0"
+  },
+  "peerDependencies": {
+    "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0",
+    "graphql-tag": "^2.0.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/testing": "^1.17.7",
+    "@types/lodash": "4.14.159",
+    "graphql": "^15.3.0",
+    "jest": "^26.4.0",
+    "ts-jest": "^26.2.0",
+    "typescript": "^3.9.7"
+  },
+  "main": "dist/index.js"
+}
