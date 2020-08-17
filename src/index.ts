@@ -18,7 +18,6 @@ export const plugin: PluginFunction<TypeScriptMongoPluginConfig> = (
   const header = visitor.objectIdImport;
 
   const res = [header, ...visitorResult.definitions.filter(d => typeof d === 'string')].join('\n');
-  console.log("GOZDECKI res", res)
   return res;
 };
 

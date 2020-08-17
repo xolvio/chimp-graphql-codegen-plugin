@@ -36,7 +36,6 @@ describe('TypeScript Mongo', () => {
 
     it.skip('Should include only the relevant types', async () => {
       const result = await plugin(schema, [], {}, { outputFile: '' });
-      console.log("GOZDECKI result", result)
       expect(result).toContain('export type UserDbObject = {');
       expect(result).not.toContain('export type QueryDbObject = {');
     });
