@@ -24,7 +24,7 @@ export const plugin: PluginFunction<TypeScriptMongoPluginConfig> = (
 export const DIRECTIVES = gql`
   directive @${Directives.UNION}(discriminatorField: String, additionalFields: [AdditionalEntityFields]) on UNION
   directive @${Directives.ABSTRACT_ENTITY}(discriminatorField: String!, additionalFields: [AdditionalEntityFields]) on INTERFACE
-  directive @${Directives.GRAPHQLATOR}(embedded: Boolean, additionalFields: [AdditionalEntityFields]) on OBJECT
+  directive @${Directives.CHIMP}(embedded: Boolean, additionalFields: [AdditionalEntityFields]) on OBJECT
   directive @${Directives.COLUMN}(overrideType: String) on FIELD_DEFINITION
   directive @${Directives.COMPUTED} on FIELD_DEFINITION
   directive @${Directives.ID} on FIELD_DEFINITION

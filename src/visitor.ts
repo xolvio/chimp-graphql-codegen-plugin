@@ -347,7 +347,7 @@ export class TsMongoVisitor extends BaseVisitor<TypeScriptMongoPluginConfig, Typ
   }
 
   ObjectTypeDefinition(node: ObjectTypeDefinitionNode): string {
-    const entityDirective = this._getDirectiveFromAstNode(node, Directives.GRAPHQLATOR);
+    const entityDirective = this._getDirectiveFromAstNode(node, Directives.CHIMP);
 
     if (['Query', 'Mutation', 'Subscription'].includes(node.name.value)) {
       return undefined;

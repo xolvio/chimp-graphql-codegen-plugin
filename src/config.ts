@@ -78,7 +78,7 @@ export interface TypeScriptMongoPluginConfig extends RawConfig {
 
 export enum Directives {
   ID = 'id',
-  GRAPHQLATOR = 'graphqlator',
+  CHIMP = 'chimp',
   ABSTRACT_ENTITY = 'abstractEntity',
   UNION = 'union',
   LINK = 'link',

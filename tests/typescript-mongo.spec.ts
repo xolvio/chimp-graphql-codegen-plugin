@@ -14,7 +14,7 @@ describe('TypeScript Mongo', () => {
   const schema = buildSchema(/* GraphQL */ `
     ${print(addToSchema)}
 
-    type User @graphqlator(additionalFields: [{ path: "nonSchemaField", type: "string" }]) {
+    type User @chimp(additionalFields: [{ path: "nonSchemaField", type: "string" }]) {
       id: ID @id
       name: String
       gender: Gender
@@ -38,12 +38,12 @@ describe('TypeScript Mongo', () => {
       nonNullableColumnMapPath: String! @column @map(path: "nonNullableColumnMap.level")
     }
 
-    type EmbeddedType @graphqlator {
+    type EmbeddedType @chimp {
       eField: String @column
       eField2: Int! @column
     }
 
-    type Machine @graphqlator {
+    type Machine @chimp {
       documents(addPublic: Boolean = false): [Document] @link(overrideType: "MachineDocument")
     }
 
@@ -60,7 +60,7 @@ describe('TypeScript Mongo', () => {
       foo: String! @column
     }
 
-    type Test2 @graphqlator {
+    type Test2 @chimp {
       testfield: TEST! @link
     }
 
@@ -89,7 +89,7 @@ describe('TypeScript Mongo', () => {
       document: String! @column
     }
 
-    type Post implements FeedItem @graphqlator {
+    type Post implements FeedItem @chimp {
       id: ID! @id
       document: String! @column
       author: User! @link
