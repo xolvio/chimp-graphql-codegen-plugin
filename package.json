@@ -1,6 +1,6 @@
 {
   "name": "chimp-graphql-codegen-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "GraphQL Code Generator plugin for Chimp",
   "repository": {
     "type": "git",
