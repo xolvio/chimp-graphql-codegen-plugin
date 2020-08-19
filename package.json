@@ -1,10 +1,10 @@
 {
-  "name": "graphqlator-codegen-plugin",
+  "name": "chimp-graphql-codegen-plugin",
   "version": "0.0.3",
-  "description": "GraphQL Code Generator plugin for GraphQLator",
+  "description": "GraphQL Code Generator plugin for Chimp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xolvio/graphqlator-codegen-plugin.git"
+    "url": "https://github.com/xolvio/chimp-graphql-codegen-plugin.git"
   },
   "license": "MIT",
   "scripts": {
