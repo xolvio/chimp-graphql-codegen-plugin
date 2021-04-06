@@ -26,7 +26,7 @@ export const DIRECTIVES = gql`
   directive @${Directives.ABSTRACT_ENTITY}(discriminatorField: String!, additionalFields: [AdditionalEntityFields]) on INTERFACE
   directive @${Directives.CHIMP}(embedded: Boolean, additionalFields: [AdditionalEntityFields]) on OBJECT
   directive @${Directives.COLUMN}(overrideType: String) on FIELD_DEFINITION
-  directive @${Directives.COMPUTED} on FIELD_DEFINITION
+  directive @${Directives.COMPUTED} on FIELD_DEFINITION | OBJECT
   directive @${Directives.ID} on FIELD_DEFINITION
   directive @${Directives.LINK}(overrideType: String) on FIELD_DEFINITION
   directive @${Directives.EMBEDDED} on FIELD_DEFINITION
