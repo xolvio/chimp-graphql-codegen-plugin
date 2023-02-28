@@ -1,6 +1,5 @@
-import { Types, PluginFunction, PluginValidateFn } from '@graphql-codegen/plugin-helpers';
-import { parse, visit, GraphQLSchema } from 'graphql';
-import { printSchemaWithDirectives } from '@graphql-tools/utils';
+import { Types, PluginFunction, PluginValidateFn, oldVisit, getCachedDocumentNodeFromSchema } from '@graphql-codegen/plugin-helpers';
+import { GraphQLSchema } from 'graphql';
 import { extname } from 'path';
 import gql from 'graphql-tag';
 import { TsMongoVisitor } from './visitor';
@@ -12,9 +11,8 @@ export const plugin: PluginFunction<TypeScriptMongoPluginConfig> = (
   config: TypeScriptMongoPluginConfig
 ) => {
   const visitor = new TsMongoVisitor(schema, config);
-  const printedSchema = printSchemaWithDirectives(schema);
-  const astNode = parse(printedSchema);
-  const visitorResult = visit(astNode, { leave: visitor as any });
+  const astNode = getCachedDocumentNodeFromSchema(schema);
+  const visitorResult = oldVisit(astNode, { leave: visitor as any });
   const header = visitor.objectIdImport;
 
   const res = [header, ...visitorResult.definitions.filter(d => typeof d === 'string')].join('\n');
@@ -22,9 +20,9 @@ export const plugin: PluginFunction<TypeScriptMongoPluginConfig> = (
 };
 
 export const DIRECTIVES = gql`
-  directive @${Directives.UNION}(discriminatorField: String, additionalFields: [AdditionalEntityFields]) on UNION
+  directive @${Directives.UNION}(additionalFields: [AdditionalEntityFields], discriminatorField: String) on UNION
   directive @${Directives.ABSTRACT_ENTITY}(discriminatorField: String!, additionalFields: [AdditionalEntityFields]) on INTERFACE
-  directive @${Directives.CHIMP}(embedded: Boolean, additionalFields: [AdditionalEntityFields]) on OBJECT
+  directive @${Directives.CHIMP}(additionalFields: [AdditionalEntityFields], embedded: Boolean) on OBJECT
   directive @${Directives.COLUMN}(overrideType: String) on FIELD_DEFINITION
   directive @${Directives.COMPUTED} on FIELD_DEFINITION | OBJECT
   directive @${Directives.ID} on FIELD_DEFINITION
